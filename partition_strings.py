@@ -3,7 +3,7 @@ def partition(s: str, k: int, fill: str):
     res = []
 
     for char in s:
-        if len(st) < 3:
+        if len(st) < k:
             st += char
 
         else:
@@ -12,11 +12,11 @@ def partition(s: str, k: int, fill: str):
 
     else:
         res.append(st)
-        fill_count = len(st) % 3
+        fill_count = len(st) % k
         if fill_count != 0:
-            res[-1] = f'{res[-1]}{fill * (3 - fill_count)}'
+            res[-1] = f'{res[-1]}{fill * (k - fill_count)}'
 
-    print(res)
+    return res
 
 
-partition('abcdefghijklm', 3, 'x')
+print(partition('abcdefghijklm', 3, 'x'))
